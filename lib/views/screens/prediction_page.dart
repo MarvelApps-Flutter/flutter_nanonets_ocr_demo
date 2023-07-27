@@ -21,8 +21,7 @@ class PredictionScreen extends StatefulWidget {
 }
 
 class _PredictionScreenState extends State<PredictionScreen> {
-  String apiKey = "b1179314-e271-11ed-afa9-76ff1797c1e3";
-  //"NANONETS API KEY HERE";
+  String apiKey = "NANONETS API KEY HERE";
   @override
   Widget build(BuildContext context) {
     NanonetsOCR nanonetsOCR = NanonetsOCR();
@@ -33,17 +32,9 @@ class _PredictionScreenState extends State<PredictionScreen> {
         body: FutureBuilder(
             future: widget.isUrl
                 ? nanonetsOCR.predictDocumentURL(
-                    apiKey,
-                    widget.documentUrl,
-                    "9cc0e411-212e-4c50-b0fa-0f502edeb6d5",
-                    //"OCR MODEL ID HERE",
-                    context)
+                    apiKey, widget.documentUrl, "OCR MODEL ID HERE", context)
                 : nanonetsOCR.predictDocumentFile(
-                    apiKey,
-                    widget.image,
-                    //"OCR MODEL ID HERE",
-                    "9cc0e411-212e-4c50-b0fa-0f502edeb6d5",
-                    context),
+                    apiKey, widget.image, "OCR MODEL ID HERE", context),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.active) {
                 return loadingWidget();
